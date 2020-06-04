@@ -1,5 +1,6 @@
 import discord
 import secrets
+import os
 
 client = discord.Client()
 
@@ -15,4 +16,4 @@ async def on_message(message):
     if message.content.startswith('$hello'):
         await message.channel.send('Hi!')
 
-client.run(secrets.token)
+client.run(os.environ.get('discord_token'))
