@@ -1,6 +1,8 @@
 import discord
 import secrets
+import string
 import os
+import xchange
 
 client = discord.Client()
 
@@ -15,5 +17,10 @@ async def on_message(message):
 
     if message.content.startswith('$hello'):
         await message.channel.send('Hi!')
+
+    if message.content.startswith('$exchange'):
+        string.strip(message.content, '$exchange')
+        if message.content.startswith('rub') or message.content.startswith('Rub') or message.content.startswith('RUB'):
+            await message.channel.send('Euro: ' + RUB.exchange_rub_to_euro + '; \n Dollar: ' + RUB.exchange_rub_to_usd)
 
 client.run(os.environ.get('discord_token'))
