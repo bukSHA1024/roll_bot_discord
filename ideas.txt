@@ -1,0 +1,6 @@
++   "hello"     -   greeting
+-   "girls"     -   random hot picture of rand girl
+-   "meme"      -   random meme
+-   "schedule"  -   study schedule
+-   "exchange"  -   exchange rub to $ and euro and revers
+-   "file__"    -   searching for study files with additional information
