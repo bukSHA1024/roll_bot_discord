@@ -1,4 +1,5 @@
 +   "hello"     -   greeting
++   "roll"      -   random int from 1 to 100
 -   "girls"     -   random hot picture of rand girl
 -   "meme"      -   random meme
 -   "schedule"  -   study schedule
