@@ -1,5 +1,5 @@
 import discord
-import secrets
+import random
 import os
 
 client = discord.Client()
@@ -15,5 +15,9 @@ async def on_message(message):
 
     if message.content.startswith('$hello'):
         await message.channel.send('Hi!')
+    
+    if message.content.startswith('$roll'):
+        roll_result = random.randint(1, 100)
+        await message.channel.send('You rolled: ' + roll_result)
 
 client.run(os.environ.get('discord_token'))
