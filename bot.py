@@ -19,8 +19,9 @@ async def on_message(message):
         await message.channel.send('Hi!')
 
     if message.content.startswith('$exchange'):
-        string.strip(message.content, '$exchange')
-        if message.content.startswith('rub') or message.content.startswith('Rub') or message.content.startswith('RUB'):
-            await message.channel.send('Euro: ' + RUB.exchange_rub_to_euro + '; \n Dollar: ' + RUB.exchange_rub_to_usd)
+        string.strip(message.content, '$exchange ')
+        if message.content.startswith('rub'):
+            string.strip(message.content, 'rub ')
+            await message.channel.send("Uero: " + RUB(int(message.content)).exchange_to_eur() + "\n Dollar: " + RUB(int(message.content)).exchange_to_usd())
 
 client.run(os.environ.get('discord_token'))
