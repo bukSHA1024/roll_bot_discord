@@ -14,6 +14,6 @@ async def on_message(message):
         return
 
     if message.content.startswith('$hello'):
-        await message.channel.send('Hi!')
+        await message.channel.send(f"Hello, {message.author.mention}!")
 
 client.run(os.environ.get('discord_token'))
