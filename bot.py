@@ -15,9 +15,17 @@ async def on_message(message):
 
     if message.content.startswith('$hello'):
         await message.channel.send('Hi!')
-    
+
     if message.content.startswith('$roll'):
-        roll_result = random.randint(1, 100)
-        await message.channel.send('You rolled: ' + roll_result)
+        words = message.content.split(' ')
+        if len(words) == 3 and words[1].isdigit() and words[2].isdigit():
+            low = int(words[1])
+            high = int(words[2])
+            if low > high:
+                low, high = high, low
+        else:
+            low, high = 1, 100
+        roll_result = random.randint(low, high)
+        await message.channel.send('You rolled: ' + str(roll_result))
 
 client.run(os.environ.get('discord_token'))
