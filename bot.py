@@ -1,6 +1,7 @@
 import discord
 import random
 import os
+import auxiliary as aux
 
 client = discord.Client()
 
@@ -18,14 +19,15 @@ async def on_message(message):
 
     if message.content.startswith('$roll'):
         words = message.content.split(' ')
-        if len(words) == 3 and words[1].isdigit() and words[2].isdigit():
-            low = int(words[1])
-            high = int(words[2])
-            if low > high:
-                low, high = high, low
-        else:
-            low, high = 1, 100
+        low, high = 0, 100
+        if len(words) == 2:
+            high = aux.parse_number(words[1], high)
+        elif len(words) == 3:
+            low = aux.parse_number(words[1], low)
+            high = aux.parse_number(words[2], high)
+        if low > high:
+            low, high = high, low
         roll_result = random.randint(low, high)
-        await message.channel.send('You rolled: ' + str(roll_result))
+        await message.channel.send(f"You rolled({low}:{high}): " + str(roll_result))
 
 client.run(os.environ.get('discord_token'))
