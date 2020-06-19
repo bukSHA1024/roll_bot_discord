@@ -30,4 +30,12 @@ async def on_message(message):
         roll_result = random.randint(low, high)
         await message.channel.send(f"You rolled({low}:{high}): " + str(roll_result))
 
+    if message.content.startswith('$choice '):
+        arguments = message.content[8:]
+        words = arguments.split(' или ')
+        if len(words) == 1:
+            words = arguments.split(' ')
+        choice = random.choice(words)
+        await message.channel.send(choice)
+
 client.run(os.environ.get('discord_token'))
